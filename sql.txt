@@ -1,0 +1,26 @@
+#
+#	formgen.py - example table definition file. formgen will use this
+#		to create models, controllers, and views. Labels in the 
+#		right #-delimited column are used to label form fields
+#		in the create/edit form for this table.
+#
+
+/!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `example` (
+  `id` int(11) NOT NULL AUTO_INCREMENT, 			# Id
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,	# Created
+  `varcharname` varchar(64) COLLATE utf8_bin DEFAULT NULL,	# Varchar
+  `textname` text COLLATE utf8_bin,				# Text
+  `datetimename` datetime NULL,					# Date
+  `intname` int(11) DEFAULT NULL,				# Int
+  `modified` datetime NOT NULL,					# Modified
+  `deleted` datetime DEFAULT NULL,				# Deleted
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+#  For convenience, here are some typical SQL field declarations
+#  `varcharname` varchar(64) COLLATE utf8_bin DEFAULT NULL,	# Varchar
+#  `textname` text COLLATE utf8_bin,				# Text
+#  `datetimename` datetime NULL,				# Date
+#  `intname` int(11) DEFAULT NULL,				# Int

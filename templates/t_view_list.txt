@@ -1,0 +1,41 @@
+        <!-- Begin Right Column -->
+<div>
+<?php print_message($this->session->flashdata('message'),$this->session->flashdata('message_type')); ?>
+
+<div class="dt-heading">%fg_nice_name%
+<div class="dt-action"><?php echo anchor('/%fg_table_name%/create','<i class="icon-plus-sign"></i> New %fg_nice_name%') ?></div>
+</div>
+
+<?
+$thetable = '<table class="list_table">
+<tr>
+%fg_table_headings%
+<td class="heading">Edit</td>
+<td class="heading">Delete</td>
+</tr>';
+$rowcount = 0;
+if( count($%fg_table_name%s) > 0 ) {
+foreach ( $%fg_table_name%s as $row ) {
+
+$rowcount++;
+
+if( $rowcount % 2 ) $thetable .= '<tr class="grey">';
+else $thetable .= '<tr class="white">';
+%fg_table_data%
+$thetable .= "<td>".anchor('/%fg_table_name%/edit/'.$row['id'],'edit')."</td>";
+$thetable .= "<td>".anchor('/%fg_table_name%/remove/'.$row['id'],'delete')."</td>";
+$thetable .= "</tr>";
+}
+}
+$thetable .= '</table>';
+
+if($rowcount > 0)
+echo $thetable;
+else
+echo '<p><br />No %fg_nice_name%s. '.anchor('/%fg_table_name%/create','Add one to get started.').'</p>';
+
+echo '<div class="dt-pagination">'.$this->pagination->create_links().'</div>';
+?>
+</div>
+<!-- End Right Column -->
+
